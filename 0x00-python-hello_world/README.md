@@ -1,4 +1,4 @@
-# ALX - higher level programming
+# ALX -- 0x00 - Python hello world
 
 ## Tasks :memo:
 
