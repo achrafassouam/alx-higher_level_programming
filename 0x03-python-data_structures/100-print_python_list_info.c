@@ -1,0 +1,42 @@
+#include <Python.h>
+
+/**
+ * print_python_list_info - print python info
+ * @p: PyObject 
+ * Return: no return
+ */
+
+void print_python_list_info(PyObject *p)
+{
+	PyListObject *list;
+	PyObject *item, *type_obj;
+	int list_len, allocated_memory, i;
+	char *type_name;
+
+
+	if (!PyList_Check(p)) 
+	{
+		PyErr_SetString(PyExc_TypeError, "Object is not a Python list");
+		return;
+	}
+
+	list = (PyListObject *)p;
+
+	list_len = Py_SIZE(list);
+
+	printf("[*] Size of the Python List = %d\n", list_len);
+
+	allocated_memory = (int)list->allocated;
+
+	printf("[*] Allocated = %d bytes\n", allocated_memory);
+
+	for (i = 0; i < list_len; ++i)
+	{
+		item = PyList_GET_ITEM(list, i);
+		type_obj = item->ob_type;
+
+		type_name = type_obj->tp_name;
+
+		printf("Element %d: %s\n", i, type_name);
+	}
+}
