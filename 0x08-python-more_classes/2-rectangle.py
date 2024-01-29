@@ -12,6 +12,11 @@ class Rectangle:
     Raises:
         TypeError if args aren't int type
         ValueError if args are les then 0.
+    Area:
+        returns the area of the rectangle
+    Perimeter:
+        return the perimeter of the rectangle
+        if one of the args is equal to 0, the perimeter is 0
     """
     def __init__(self, width=0, height=0):
         self.width = width
