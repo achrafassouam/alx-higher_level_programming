@@ -1,55 +1,44 @@
 #!/usr/bin/python3
 import sys
 
+if len(sys.argv) != 2:
+    print("Usage: nqueens N")
+    sys.exit(1)
 
-def print_board(board):
-    for row in board:
-        print(" ".join(row))
+N = sys.argv[1]
 
+try:
+    N = int(N)
+except ValueError:
+    print("N must be a number")
+    sys.exit(1)
 
-def is_valid(board, row, col):
-    for i in range(len(board)):
-        if board[i][col] == 'Q':
+if N < 4:
+    print("N must be at least 4") 
+    sys.exit(1)
+
+def solveNQueens(n):
+    solutions = []
+    solve(n, [], solutions)
+    return solutions
+
+def solve(n, columnPlacement, solutions):
+    if len(columnPlacement) == n:
+        solutions.append(list(columnPlacement))
+        return
+    
+    for i in range(n):
+        if isSafe(columnPlacement, i):
+            columnPlacement.append(i)
+            solve(n, columnPlacement, solutions)
+            columnPlacement.pop()
+            
+def isSafe(columnPlacement, i):
+    row = len(columnPlacement)
+    for queen in range(row):
+        if columnPlacement[queen] == i or abs(columnPlacement[queen] - i) == row - queen:
             return False
-
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 'Q':
-            return False
-
-    for i, j in zip(range(row, len(board), 1), range(col, -1, -1)):
-        if board[i][j] == 'Q':
-            return False
-
     return True
 
-
-def solve_nqueens(n, board, col):
-    if col >= n:
-        print_board(board)
-        return
-
-    for i in range(n):
-        if is_valid(board, i, col):
-            board[i][col] = 'Q'
-            solve_nqueens(n, board, col+1)
-            board[i][col] = '.'
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: nqueens N")
-        sys.exit(1)
-
-    n = 0
-    try:
-        n = int(sys.argv[1])
-    except ValueError:
-        print("N must be a number")
-        sys.exit(1)
-
-    if n < 4:
-        print("N must be at least 4")
-        sys.exit(1)
-
-    board = [['.' for i in range(n)] for j in range(n)]
-    solve_nqueens(n, board, 0)
+for solution in solveNQueens(N):
+    print([[i, solution[i]] for i in range(N)])
