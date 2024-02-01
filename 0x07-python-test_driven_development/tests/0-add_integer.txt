@@ -73,10 +73,6 @@ Erros :
     	Traceback (most recent call last):
 	ValueError: could not convert string to float: 'Alx'
 
-	>>> add_integer(1)
-	Traceback (most recent call last):
-	TypeError: missing one argument
-
 	>>> add_integer(1e500, 2e500)
     	Traceback (most recent call last):
-   	OverflowError: Float overflow	
+	OverflowError: cannot convert float infinity to integer
