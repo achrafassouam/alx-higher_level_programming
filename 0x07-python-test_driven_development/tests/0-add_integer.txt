@@ -76,3 +76,6 @@ Erros :
 	>>> add_integer(1e500, 2e500)
     	Traceback (most recent call last):
 	OverflowError: cannot convert float infinity to integer
+
+	>>> print(add_integer(1, ))
+	99
