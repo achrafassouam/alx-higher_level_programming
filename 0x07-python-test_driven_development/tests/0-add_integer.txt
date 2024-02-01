@@ -1,0 +1,58 @@
+The ``0. Integers addition`` Task
+=================================
+
+	>>> add_integer = __import__("0-add_integer").add_integer
+
+Making sure the document and the function exists:
+
+	>>> doc = __import__("0-add_integer").__doc__
+	>>> print(len(doc) > 0)
+	True
+
+	>>> func = __import__("0-add_integer").add_integer.__doc__
+	>>> print(len(func) > 0)
+	True
+
+Usage & correct output :
+
+	>>> print(add_integer(1, 1))
+	2
+
+	>>> print(add_integer(0, 1))
+	1
+
+	>>> print(add_integer(1, 0))
+	1
+
+	>>> print(add_integer(-50, 50))
+	0
+
+	>>> print(add_integer(-50, -50))
+	-100
+
+	>>> print(add_integer(0.5, 9.5))
+	9
+
+	>>> print(add_integer(100, 50.5))
+	150
+
+	>>> print(add_integer(10, 9**2))
+	91
+
+Erros :
+
+	>>> print(add_integer(None, 5))
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> print(add_integer(10, "ab"))
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> print(add_integer((1, 2), 5))
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> print(add_integer("Alx", "School"))
+	Traceback (most recent call last):
+	TypeError: a must be an integer
