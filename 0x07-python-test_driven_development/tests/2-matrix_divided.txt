@@ -41,6 +41,10 @@ Errors:
 	Traceback (most recent call last):
 	TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
+	>>> print(matrix_divided(matrix, 0))
+	Traceback (most recent call last):
+	ZeroDivisionError: division by zero
+
 	>>> matrix = [[1, 2], [3, 4, 5]]
 	>>> print(matrix_divided(matrix, 2))
 	Traceback (most recent call last):
