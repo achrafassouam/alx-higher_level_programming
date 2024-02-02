@@ -17,7 +17,7 @@ def matrix_divided(matrix, div):
 
     typeerror1 = "matrix must be a matrix (list of lists) of integers/floats"
     typeerror2 = "Each row of the matrix must have the same size"
-    
+
     if not isinstance(matrix, list) or not matrix[0]:
         raise TypeError(typeerror1)
 
