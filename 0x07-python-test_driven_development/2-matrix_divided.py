@@ -33,10 +33,3 @@ def matrix_divided(matrix, div):
         new_matrix.append(new_row)
 
     return new_matrix
-
-    TypeError: matrix must be a matrix (array of arrays of integers/floats)
-
-    try:
-        result = matrix_divided(matrix, div) 
-    except TypeError as e:
-        print(e)
