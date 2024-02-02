@@ -26,14 +26,14 @@ def matrix_divided(matrix, div):
     new_matrix = []
 
     if matrix is None or len(matrix) is 0 or len(matrix[0]) is 0:
-        raise TypeError(wrong_type)
+        raise TypeError(typeerror1)
     previous = len(matrix[0])
 
     for count, row in enumerate(matrix):
         if not isinstance(row, list):
             raise TypeError(typeerror1)
         if len(row) != previous:
-             raise TypeError(typeerror2)
+            raise TypeError(typeerror2)
         previous = len(row)
         new_matrix.append(row[:])
         for val, item in enumerate(row):
