@@ -1,0 +1,32 @@
+The ``1. Divide a matrix`` Task:
+================================
+
+>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+Check if document and functions exists :
+	>>> module = __import__("2-matrix_divided").__doc__
+	>>> print(len(module) > 0)
+	True
+
+	>>> func = __import__("2-matrix_divided").matrix_divided.__doc__
+	>>> print(len(func) > 0)
+	True
+
+Correct Usage:
+
+	>>> matrix = [[4, 6, 8], [2, 2, 1]]
+	>>> print(matrix_divided(matrix, 2))
+	[[2.0, 3.0, 4.0], [1.0, 1.0, 0.5]]
+
+	>>> print(matrix_divided(matrix, 2.5))
+	[[1.6, 2.4, 3.2], [0.8, 0.8, 0.4]]
+
+	>>> print(matrix_divided(matrix, -1))
+	[[-4.0, -6.0, -8.0], [-2.0, -2.0, -1.0]]
+
+Errors:
+
+	>>> print(matrix_divided(matrix, "alx"))
+	Traceback (most recent call last):
+	TypeError: div must be a number
+
