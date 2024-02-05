@@ -1,0 +1,25 @@
+1. My list Task:
+================
+
+	>>> is_same_class = __import__("1-my_list").is_same_class
+
+Making sure the document exists:
+
+	>>> doc = __import__("1-my_list").__doc__
+	>>> print(len(doc) > 0)
+	True
+
+	>>> func = __import__("1-my_list").is_same_class.__doc__
+	>>> print(len(func) > 0)
+	True
+
+Correct output :
+
+	>>> print(is_same_class(1, 2))
+	3
+
+Errors:
+
+	>>> print(is_same_class(4, "Alx"))
+	Traceback (most recent call last):
+	TypeError: b must be an integer
