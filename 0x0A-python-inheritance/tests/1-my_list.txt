@@ -1,25 +1,19 @@
 1. My list Task:
 ================
 
-	>>> is_same_class = __import__("1-my_list").is_same_class
+Checking for module docstring:
+         >>> m = __import__("1-my_list").__doc__
+         >>> len(m) > 1
+         True
 
-Making sure the document exists:
+Checking for class docstring:
+         >>> c = __import__("1-my_list").MyList.__doc__
+         >>> len(c) > 1
+         True
 
-	>>> doc = __import__("1-my_list").__doc__
-	>>> print(len(doc) > 0)
-	True
-
-	>>> func = __import__("1-my_list").is_same_class.__doc__
-	>>> print(len(func) > 0)
-	True
-
-Correct output :
-
-	>>> print(is_same_class(1, 2))
-	3
-
-Errors:
-
-	>>> print(is_same_class(4, "Alx"))
-	Traceback (most recent call last):
-	TypeError: b must be an integer
+	>>> my_list.__doc__
+	>>> my_list = MyList()
+	>>> my_list.append(1)
+	>>> my_list.append(2)
+	>>> len(my_list)
+	2

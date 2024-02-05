@@ -1,0 +1,24 @@
+1. My list Task:
+================
+
+Making sure the document exists:
+
+	>>> doc = __import__("1-my_list").__doc__
+	>>> print(len(doc) > 0)
+	True
+
+	>>> func = __import__("1-my_list").MyList.__doc__
+	>>> print(len(func) > 0)
+	True
+
+Correct output :
+
+	>>> MyList = MyList()
+	>>> print(MyList(1, 2))
+	3
+
+Errors:
+
+	>>> print(MyList(4, "Alx"))
+	Traceback (most recent call last):
+	TypeError: b must be an integer
