@@ -7,6 +7,6 @@
 
 def write_file(filename="", text=""):
     """ open and rewrite a file """
-    with open(filename, 'r', encoding="UTF8") as f:
+    with open(filename, 'w', encoding="UTF8") as f:
         f.write(text)
         return len(text)
