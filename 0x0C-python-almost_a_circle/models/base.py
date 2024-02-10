@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-""" doc """
+""" Base class """
 
 
 class Base:
+    """ properties of Base """
     __nb_objects = 0
 
     def __init__(self, id=None):
