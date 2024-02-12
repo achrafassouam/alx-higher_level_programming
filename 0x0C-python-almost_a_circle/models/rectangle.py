@@ -63,6 +63,7 @@ class Rectangle(Base):
         self.setter_validation("y", value)
         self.__y = value
 
+    @staticmethod
     def setter_validation(self, name, value):
         """ setter for validations raise """
         if type(value) != int:
