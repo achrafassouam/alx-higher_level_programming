@@ -52,58 +52,6 @@ class Rectangle(Base):
         self.setter_validation("y", value)
         self.__y = value
 
-    def area(self):
-        return (self.width * self.height)
-
-    def display(self):
-        print("\n" * self.y, end="")
-        for i in range(self.height):
-            print(" " * self.x, end="")
-            print("#" * self.width)
-
-    def __str__(self):
-        return (
-            "[Rectangle] ({})".format(self.id) +
-            " {}/{}".format(self.x, self.y) +
-            " - {}/{}".format(self.width, self.height)
-        )
-
-    def update(self, *args, **kwargs):
-        if args:
-            for i, arg in enumerate(args):
-                if i == 0:
-                    self.id = arg
-                elif i == 1:
-                    self.width = arg
-                elif i == 2:
-                    self.height = arg
-                elif i == 3:
-                    self.x = arg
-                elif i == 4:
-                    self.y = arg
-
-        elif kwargs:
-            for key, value in kwargs.items():
-                if key == "id":
-                    self.id = value
-                elif key == "width":
-                    self.width = value
-                elif key == "height":
-                    self.height = value
-                elif key == "x":
-                    self.x = value
-                elif key == "y":
-                    self.y = value
-
-    def to_dictionary(self):
-        return {
-                'id': self.id,
-                'width': self.width,
-                'height': self.height,
-                'x': self.x,
-                'y': self.y
-        }
-
     def setter_validation(self, name, value):
         if type(value) != int:
             raise TypeError("{} must be an integer".format(name))
