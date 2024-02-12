@@ -70,3 +70,25 @@ class Rectangle(Base):
         for i in range(self.height):
             print(" " * self.x, end="")
             print("#" * self.width)
+
+    def __str__(self):
+        rectangle_string = "[Rectangle] ({})"
+        id_string = rectangle_string.format(self.id)
+        xy_string = "{}/{}"
+        xy = xy_string.format(self.x, self.y)
+        wh_string = "{}/{}"
+        wh = wh_string.format(self.width, self.height)
+        dash = " - "
+        return id_string + " " + xy + dash + wh + dash + id_string
+
+    def update(self, *args):
+        if len(args) > 0:
+            self.id = args[0]
+        if len(args) > 1:
+            self.width = args[1]
+        if len(args) > 2:
+            self.height = args[2]
+        if len(args) > 3:
+            self.x = args[3]
+        if len(args) > 4:
+            self.y = args[4]
