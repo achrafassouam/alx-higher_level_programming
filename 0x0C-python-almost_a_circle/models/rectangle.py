@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-""" Rectangle Class """
-
-
+"""
+    Rectangle Class
+"""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """ initialization of Rectangle class """
+    """
+        initialization of Rectangle class
+    """
     def __init__(self, width, height, x=0, y=0, id=None):
         self.width = width
         self.height = height
@@ -101,3 +103,11 @@ class Rectangle(Base):
                 'x': self.x,
                 'y': self.y
         }
+
+    def setter_validation(self, name, value):
+        if type(value) != int:
+            raise TypeError("{} must be an integer".format(name))
+        if name in ["width", "height"] and value <= 0:
+            raise ValueError("{} must be > 0".format(name))
+        if name in ["x", "y"] and value < 0:
+            raise ValueError("{} must be >= 0".format(name))
