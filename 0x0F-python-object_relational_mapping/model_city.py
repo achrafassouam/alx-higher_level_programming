@@ -4,7 +4,7 @@
 """
 
 from model_state import Base, State
-rom sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 
 class City(Base):
