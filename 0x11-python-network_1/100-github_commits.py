@@ -15,11 +15,15 @@ if __name__ == "__main__":
 
     response = requests.get(url)
 
-    if response.status_code == 200:
-        commits = response.json()
-        for commit in commits[:10]:
-            sha = commit.get('sha')
-            author_name = commit.get('commit').get('author').get('name')
-            print(f"{sha}: {author_name}")
-    else:
-        print(f"Error fetching commits. Status code: {response.status_code}")
+    try:
+        if response.status_code == 200:
+            commits = response.json()
+            for commit in commits[:10]:
+                sha = commit.get('sha')
+                author_name = commit.get('commit').get('author').get('name')
+                print("{}: {}".format(sha, author_name))
+        else:
+            print("Error fetching commits.")
+            print("Status code: {}".format(response.status_code))
+    except IndexError:
+        pass
