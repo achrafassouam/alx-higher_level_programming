@@ -14,16 +14,12 @@ if __name__ == "__main__":
     url = "https://api.github.com/repos/{}/{}/commits".format(repo, owner)
 
     response = requests.get(url)
+    commits = response.json()
 
     try:
-        if response.status_code == 200:
-            commits = response.json()
-            for commit in commits[:10]:
-                print("{}: {}".format(
-                    commits[index].get("sha"),
-                    commits[index].get("commit").get("author").get("name")))
-        else:
-            print("Error fetching commits.")
-            print("Status code: {}".format(response.status_code))
+        for commit in range(10):
+            print("{}: {}".format(
+                commits[commit].get("sha"),
+                commits[commit].get("commit").get("author").get("name")))
     except IndexError:
         pass
