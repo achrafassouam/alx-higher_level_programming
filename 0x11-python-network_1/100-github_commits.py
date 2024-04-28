@@ -7,14 +7,15 @@ and uses the GitHub API to display your id
 from sys import argv
 import requests
 
+
 if __name__ == "__main__":
-    url = 'https://api.github.com/repos/{}/{}/commits'.format(
-        argv[1], argv[2]
-    )
-    para = {'per_page': 10}
-    response = requests.get(url, params=para)
-    commits = response.json()
-    for commit in commits:
-        sha = commit.get('sha')
-        author_name = commit.get('commit').get('author').get('name')
-        print("{}: {}".format(sha, author_name))
+    total = 0
+    commit_str = "{}: {}"
+    url = "https://api.github.com/repos/{}/{}/commits"
+    formated_url = url.format(argv[2], argv[1])
+    for commit in requests.get(formated_url).json():
+        if total < 10:
+            sha = commit.get("sha")
+            name = commit.get("commit").get("author").get("name")
+            print(commit_str.format(sha, name))
+        total += 1
