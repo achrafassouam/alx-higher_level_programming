@@ -8,18 +8,13 @@ from sys import argv
 import requests
 
 if __name__ == "__main__":
-    repo = argv[1]
-    owner = argv[2]
-    url = "https://api.github.com/repos/{}/{}/commits".format(repo, owner)
-
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        commits = response.json()
-        for commit in commits[:10]:
-            sha = commit.get('sha')
-            author_name = commit.get('commit').get('author').get('name')
-            print("{}: {}".format(sha, author_name))
-    else:
-        print("Error fetching commits.")
-        print("Status code: {}".format(response.status_code))
+    url = 'https://api.github.com/repos/{}/{}/commits'.format(
+        argv[1], argv[2]
+    )
+    para = {'per_page': 10}
+    response = requests.get(url, params=para)
+    commits = response.json()
+    for commit in commits:
+        sha = commit.get('sha')
+        author_name = commit.get('commit').get('author').get('name')
+        print("{}: {}".format(sha, author_name))
